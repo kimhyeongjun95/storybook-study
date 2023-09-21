@@ -13,12 +13,28 @@ const TodoList = () => {
       setValue("");
     }
   };
+  
+  const handleDelete = (id: number) => {
+    setTodos((prev) => {
+      const newTodos = [...prev]
+      newTodos.splice(id, 1)
+      return newTodos
+    })
+  }
+
+  const handleEditValue = (id: number, value: string) => {
+    setTodos((prev) => {
+      const newTodos = [...prev]
+      newTodos.splice(id, 1, value)
+      return newTodos
+    })
+  }
 
   return (
     <main>
       <Input setValue={setValue} value={value} handleKeyPress={handleKeyPress} />
       {todos.map((todo, index) => {
-        return <Todo text={todo} key={index} />;
+        return <Todo text={todo} key={index} id={index} handleDelete={handleDelete} handleEditValue={handleEditValue}/>;
       })}
     </main>
   );

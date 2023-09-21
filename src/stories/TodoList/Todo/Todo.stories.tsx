@@ -15,5 +15,8 @@ type Story = StoryObj<typeof meta>;
 export const Primary: Story = {
   args: {
     text: "Hello World",
+    id: 1,
+    handleEditValue: (id: number, value: string) => {},
+    handleDelete: (id: number) => {},
   },
 };
